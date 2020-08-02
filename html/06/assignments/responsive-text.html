@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text {
+            margin: 5rem auto;
+        }
+
+        body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: gray;
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+  
+
+    /* Smartphones */
+    @media only screen and (max-width: 500px) {
+      body {
+        background: red;
+      }
+
+      .text h1 {
+        font-size: 1rem;
+      }
+    }
+
+    /* Tablet */
+    @media(min-width: 501px) and (max-width: 768px) {
+      body {
+        background: blue;
+      }
+
+      .text h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Normal */
+    @media(min-width: 769px) and (max-width: 1200px) {
+      body {
+        background: green;
+      }
+
+      .text h1 {
+        font-size: 3rem;
+      }
+    }
+
+    /* Widescreen */
+    @media(min-width: 1201px) {
+      body {
+        background: black;
+      }
+
+      .text h1 {
+        font-size: 4rem;
+      }
+    }
+
+    /* Landscape */
+    @media(max-height: 500px) {
+      body {
+        background: orange;
+      }
+
+      .text h1 {
+        font-size: 2.5rem;
+      }
+      
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="text">
+        <h1>
+            Welcome 
+        </h1>
+    </div>
+</body>
+</html>
