@@ -29,15 +29,9 @@
         }
 
 
-       
 
-        #header {
-            background: #333;
-            color: #fff;
-            padding: 5px 30px;
-            height: 15vh;
-            font-size: 1rem;
-        }
+
+
 
         #main {
             float: left;
@@ -74,7 +68,7 @@
 
         }
 
-       
+
 
         .about {
             padding: 20px 20px;
@@ -145,7 +139,8 @@
             border-radius: 2rem;
 
         }
-        #blog{
+
+        #blog {
             font-size: 1rem;
             padding-left: 5vw;
         }
@@ -159,11 +154,119 @@
             color: navy;
         }
 
-        a{
+        a {
             text-decoration: none;
             color: orange;
         }
 
+        #header {
+            background: #191919;
+            color: #fff;
+            padding: 5px 30px;
+            height: 15vh;
+            width: 100%;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        nav {
+            display: flex;
+
+
+        }
+
+        .logo {
+            display: inline-block;
+        }
+
+        #main-nav {
+            display: flex;
+            /* justify-items: center; */
+            align-items: center;
+        }
+
+        #main-nav li a {
+            border: 1px solid gray;
+            padding: 10px 10px;
+            box-shadow: 1px 1px 2px white;
+            background-color: #474747;
+            margin: 0.8rem;
+            color: white;
+
+        }
+
+        @media (max-width: 650px) {
+            #header {
+                /* background: blue; */
+                display: flex;
+                height: 30vh;
+                flex-direction: column;
+                align-content: space-between;
+
+
+            }
+
+            nav {
+                display: flex;
+
+
+            }
+
+            .logo {
+                justify-self: center;
+                /* background-color: red; */
+            }
+
+            .card {
+                margin: 0;
+                padding: 0;
+            }
+
+            #main-nav {
+                display: flex;
+                justify-items: center;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                background-color: #474747;
+                
+                flex-wrap: wrap;
+                align-content: space-between;
+
+
+            }
+
+            #main-nav li {
+                border: 1px dashed grey;
+                padding: 10px 10px;
+                
+                box-shadow: none;
+                /* margin: 0.8rem; */
+                color: white;
+                width: 100%;
+                margin: 0;
+
+            }
+
+            #main-nav li a {
+                border: none;
+                padding: 10px 10px;
+                box-shadow: none;
+                margin: 0.8rem;
+                color: white;
+                background-color: transparent;
+
+            }
+
+          
+            #main-nav li:hover  {
+                background-color: #b5b5b5 ;
+
+            }
+        }
 
         @media (max-width: 920px) {
             .landing {
@@ -181,7 +284,7 @@
                 font-size: 1rem;
             }
 
-            .card{
+            .card {
                 text-align: center;
 
             }
@@ -210,15 +313,20 @@
                 display: flex;
                 justify-content: center;
             }
+
             .about img {
                 max-width: 30%;
-            float: none;
-            margin: 30px;
-            box-shadow: 1px 2px 3px black;
+                float: none;
+                margin: 30px;
+                box-shadow: 1px 2px 3px black;
             }
 
-            #footer{
+            #footer {
                 font-size: 1rem;
+            }
+
+            .logo {
+                display: inline-block;
             }
 
 
@@ -231,8 +339,21 @@
 
     <!-- Header -->
     <header id="header" class="card">
-        <h1>Eliran Amzalag</h1>
-        <p>Fullstack Developer</p>
+        <div class="logo">
+            <h1>Eliran Amzalag</h1>
+            <p>Fullstack Developer</p>
+        </div>
+
+
+        <!-- <h3 class="title">Navigation</h3> -->
+        <!-- Navigation -->
+        <nav>
+            <ul id="main-nav" class="font-description">
+                <li><a href="#">Home</a></li>
+                <li><a href="#main">About</a></li>
+                <li><a href="#sidebar">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
 
@@ -314,15 +435,7 @@
 
     <!-- Sidebar (right) -->
     <aside id="sidebar" class="card">
-        <h3 class="title">Navigation</h3>
-        <!-- Navigation -->
-        <nav>
-            <ul id="main-nav " class="font-description">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+
         <hr />
         <h3 class="title">Contact Me</h3>
         <ul class="font-description">

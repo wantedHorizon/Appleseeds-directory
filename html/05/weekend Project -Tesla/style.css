@@ -135,16 +135,19 @@
 }
 
 .header-right {
-    float: right;
-    width: 25%;
+    width: 20%;
+    position: absolute;
+    right: 5px;
+    top: 15px;
 }
 
 .header-center {
     text-align: center;
-    display: inline-block;
-    position: absolute;
-    width: 69%;
-    margin: 0 10px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    /* background-color: yellow; */
+
 }
 
 .navbar ul {
@@ -170,13 +173,34 @@
     text-transform: uppercase;
 }
 
+
+
 .logo {
+    text-decoration: none;
     font-family: tesla;
-    font-size: 25px;
+    font-size: 22px;
     line-height: 30px;
     letter-spacing: 8px;
     width: 10%;
+    left: 10px;
+    top: 10px;
+    
+    display: inline-block;
+    position: fixed;
+    /* transition: all 3s; */
+
 }
+
+.logo:in-range {
+    color: white;
+ }
+.logo:out-of-range{
+    color: black;
+}
+
+
+
+
 
 /* Page 2 */
 
@@ -185,6 +209,8 @@
     font-family: 'Roboto Mono', monospace;
     /* background-image: ; */
     font-family: gotham;
+    clip: rect(auto, auto, auto, auto);
+
 }
 
 .page2-left {

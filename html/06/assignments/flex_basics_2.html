@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .flex-container {
+        /* display: flex;
+        flex-direction: row; */
+        /* flex-direction: column; */
+        /* flex-wrap: wrap; */
+        /* flex-flow: row nowrap; */
+        /* height: 10vh;
+        justify-content: space-between;
+        width: 80vw;
+        background-color: black;
+        justify-self: center;
+        align-self: flex-end;
+
+
+ */
+
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        /* display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+
+    }
+
+    .box {
+        /* border: 1px solid black; */
+        width: 20vh;
+        height:  20vh;
+
+        background-color: tomato;
+        /* padding: 5px; */
+        margin: 0;
+        /* margin: 10px; */
+        line-height: 20px;
+        font-weight: bold;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .box1 {
+        background-color: green;
+        flex: 1;
+
+    }
+
+    .box2 {
+        background-color: blue;
+        flex: 1;
+
+
+    }
+
+    .box3 {
+        background-color: red;
+        flex: 1;
+
+    }
+
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+    }
+</style>
+
+<body>
+    <div class="flex-container">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </div>
+
+</body>
+
+</html>
