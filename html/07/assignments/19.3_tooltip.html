@@ -22,20 +22,17 @@
 
 
 
-        a[data-tooltip] .tooltiptext:after {
+        a[data-tooltip] .tooltiptext::after {
             background-color: yellow;
-            content: 'tip1';
+            content: attr(data-tooltip);
             position: absolute;
-            /* height: 40px; */
             top: -20px;
             padding: 2px 4px;
             border-radius: 5px;
             font-size: 12px;
             color: brown;
             z-index: 4;
-            /* display: none; */
-            /* visibility: visible; */
-
+      
         }
 
         a[data-tooltip="tip1"] .tooltiptext:after {
@@ -68,20 +65,20 @@
 <body>
     <p>
         Lorem ipsum dolor, consectetur  adipisicing elit. Libero minima illo dolores autem adipisci laudantium.
-        Atque veritatis <a href=”#” data-tooltip=tip1>Libero <span class="tooltiptext"></span>
+        Atque veritatis <a href=”#” data-tooltip=tip1>Libero <span class="tooltiptext" data-tooltip=tip1></span>
         </a> earum maxime fugit consequuntur eum corrupti. Deserunt debitis hic voluptatem nulla facere
         blanditiis aliquid fugit omnis excepturi fugiat quae molestiae eveniet unde repellendus nesciunt dolores
         cupiditate ullam, harum exercitationem magnam! Harum temporibus ipsum excepturi soluta id illo dolores inventore
-        in, veniam quos sapiente eos optio quae. ,<a href=”#” data-tooltip=tip1>Natus <span class="tooltiptext"></span>
+        in, veniam quos sapiente eos optio quae. ,<a href=”#” data-tooltip=tip1>Natus <span class="tooltiptext" data-tooltip=tip1></span>
         </a> reiciendis eos numquam impedit mollitia totam cupiditate
         facilis, possimus placeat ratione eveniet molestiae expedita laboriosam labore! Laudantium praesentium non
         aperiam, similique eum, ratione asperiores consequatur <a href=”#” data-tooltip=tip2>word2 <span
-                class="tooltiptext"></span> </a> deleniti sed voluptatibus ea unde doloremque.
+                class="tooltiptext" data-tooltip=tip1></span> </a> deleniti sed voluptatibus ea unde doloremque.
         Libero recusandae fugiat placeat, perferendis accusamus sequi, voluptas, cupiditate nemo distinctio
-        exercitationem <a href=”#” data-tooltip=tip3>culpa <span class="tooltiptext"></span> </a> est rem. Eligendi ad,
+        exercitationem <a href=”#” data-tooltip=tip3>culpa <span class="tooltiptext" data-tooltip=tip1></span> </a> est rem. Eligendi ad,
         officiis quibusdam unde maiores consequuntur quo ipsam asperiores?
         Deserunt, earum maiores? Ad, incidunt nisi. Quia <a href=”#” data-tooltip=tip1>sit <span
-                class="tooltiptext"></span> </a>sunt sapiente voluptate, ratione dicta deserunt corrupti
+                class="tooltiptext" data-tooltip=tip1></span> </a>sunt sapiente voluptate, ratione dicta deserunt corrupti
         distinctio iure amet ipsam eos consectetur accusantium nam, quisquam omnis sint dignissimos beatae adipisci
         assumenda.
     </p>
