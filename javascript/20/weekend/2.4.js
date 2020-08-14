@@ -19,6 +19,10 @@ const findUniq = (arr) => {
 console.log(findUniq([ 1, 1, 1, 2, 1, 1 ]));
 console.log(findUniq([ 2, 1, 1, 1, 1, 1 ]));
 console.log(findUniq([ 1, 1, 1, 1, 1, 2 ]));
+console.log(findUniq([ 1, 2, 1, 1, 1, 1 ]));
+console.log(findUniq([ 1, 2, 1, 1, 2, 1 ]));
+
+
 console.log(findUniq([ 1, 1, 2 ]));
 
 

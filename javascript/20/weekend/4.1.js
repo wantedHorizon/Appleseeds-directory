@@ -10,3 +10,5 @@ const fibonacci = (num) => {
 } 
 
 console.log(fibonacci(8));
+console.log(fibonacci(0));
+console.log(fibonacci(2));

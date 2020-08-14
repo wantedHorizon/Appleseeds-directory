@@ -14,7 +14,7 @@ const basicOp = (op, num1, num2) => {
             return num1 / num2;
 
         default:
-            console.log('Invalid OP');
+            console.log('Invalid OPERATION');
             return
 
     }
@@ -23,9 +23,6 @@ const basicOp = (op, num1, num2) => {
 
 
 console.log(basicOp('+', 4, 7)); // Output: 11
-
 console.log(basicOp('-', 15, 18)); // Output: -3
-
 console.log(basicOp('*', 5, 5)); // Output: 25
-
 console.log(basicOp('/', 49, 7)); // Output: 7

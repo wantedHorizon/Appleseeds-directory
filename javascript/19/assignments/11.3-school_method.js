@@ -41,9 +41,11 @@ const school = {
         },
     ]
 };
-const assignStudent = (school, student, subject) => {
 
-    const relevantTeacher = school.teachers
+
+school.assignStudent= function( student, subject)  {
+
+    const relevantTeacher = this.teachers
         .find(teacher => teacher.capacity && teacher.subjects.includes(subject));
 
 
@@ -55,6 +57,7 @@ const assignStudent = (school, student, subject) => {
     //adding new student
     relevantTeacher.students.push(student.id);
     relevantTeacher.capacity --;
+    console.log(this.teachers);
 
     //checks if students includes the new student
     if (school.students.findIndex(s => s.id === student.id) < 0) {
@@ -63,10 +66,14 @@ const assignStudent = (school, student, subject) => {
     return true;
 
 
+
+    
 }
+school.assignStudent();
+
 console.log(
-    assignStudent(
-        school, {
+    school.assignStudent(
+         {
             id: 5,
             name: 'name student',
             age: 12
@@ -76,8 +83,8 @@ console.log(
 );// true => successful
 
 console.log(
-    assignStudent(
-        school, {
+    school.assignStudent(
+     {
             id: 5,
             name: 'name student',
             age: 12

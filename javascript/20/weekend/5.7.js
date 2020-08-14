@@ -1,7 +1,5 @@
 
 const shortestWord = (str) => {
-
-
     return str.split(/\s+/)
     .reduce((acc,word)=> Math.min(word.length, acc), Infinity  );
 }

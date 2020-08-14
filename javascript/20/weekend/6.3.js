@@ -6,12 +6,12 @@ const longest = (a, b) => {
             str += strArr[i];
     }
     if (strArr.length > 2 &&
-        strArr[strArr.length - 1] === strArr[strArr.length - 2])
+        strArr[strArr.length - 1] === strArr[strArr.length - 2]
+    )
         str += strArr[strArr.length - 1];
 
     return str;
 }
 
 console.log(longest("xyaabbbccccdefww", "xxxxyyyyabklmopq"));
-console.log(longest('abcdefghijklmnopqrstuvwxyz','abcdefghijklmnopqrstuvwxyz'));
-
+console.log(longest('abcdefghijklmnopqrstuvwxyz', 'abcdefghijklmnopqrstuvwxyz'));
