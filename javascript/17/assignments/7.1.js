@@ -5,8 +5,6 @@ const o3 = { name: 'name3' };
 
 const m1 = new Map('');
 
-
-
 // .set()
 
 m1.set(o1, 1);
