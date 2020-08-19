@@ -13,5 +13,19 @@ const strToObjectLength = (arr) => {
     return object1;
 };
 
+const strToObjectLengthExtra = (arr) => {
+    const object1 = strToObjectLength(arr);
+    let max = {
+        letter: '',
+        length: 0
+    }
+    for(const o1 in object1 ){
+        if(object1[o1] > max.length){
+            max = {letter: o1, length: object1[o1]};
+        }
+    }
 
-console.log(strToObjectLength(array));
+    object1.maxOccurred = max;
+    return object1;
+}
+console.log(strToObjectLengthExtra(array));
