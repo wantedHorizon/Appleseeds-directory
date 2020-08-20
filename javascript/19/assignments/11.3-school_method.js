@@ -42,10 +42,9 @@ const school = {
     ]
 };
 const assignStudent = (school, student, subject) => {
-    let isAssigned = false;
 
     const relevantTeacher = school.teachers
-        .find(teacher => teacher.capacity && teacher.subjects.includes(subject))
+        .find(teacher => teacher.capacity && teacher.subjects.includes(subject));
 
 
 
@@ -55,6 +54,7 @@ const assignStudent = (school, student, subject) => {
     }
     //adding new student
     relevantTeacher.students.push(student.id);
+    relevantTeacher.capacity --;
 
     //checks if students includes the new student
     if (school.students.findIndex(s => s.id === student.id) < 0) {
