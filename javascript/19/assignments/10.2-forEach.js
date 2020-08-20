@@ -49,6 +49,8 @@ console.log("----------------extra-------------------");
 const convertToOpenClose = (str) => {
     
     return str.toLowerCase().split("").map( char => {
+        if("(){}\\/.".includes(char))
+            char= "\\"+char;
         return (str.match(new RegExp(char, "g")) || []).length >1 ?  ')' : '('; 
     } ).join('');
 }
@@ -56,4 +58,4 @@ const convertToOpenClose = (str) => {
 console.log(convertToOpenClose("din"));
 console.log(convertToOpenClose("recede"));
 console.log(convertToOpenClose("Success"));
-// console.log(convertToOpenClose("(( @")); //breaks the code ( char is not autorized with regex
+console.log(convertToOpenClose("(( @")); //breaks the code ( char is not authorized with regex

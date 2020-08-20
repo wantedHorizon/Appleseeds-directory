@@ -15,7 +15,7 @@ const steps1 = (n) => {
     while (n > 0) {
         let index =str.length-n;
         str[index]='#';
-        console.log(str.join(''));
+        console.log(`"${str.join('')}"`);
         n--;
     }
 }
