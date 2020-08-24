@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f6f6;
+        }
+
+        .interested {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .red-text {
+            color: red;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="interested">
+        <p>Why are you interested in this position?</p>
+        <textarea name="why" id="why" cols="35" rows="8"></textarea>
+        <button class="btn-interested">Submit</button>
+    </div>
+    <script>
+        const textarea = document.querySelector('#why');
+        const btnInterested = document.querySelector('.btn-interested');
+
+        function createWarning(msg) {
+            const msgP = document.createElement('p');
+            msgP.textContent = `Error: "${msg}"`;
+            msgP.classList.add('red-text');
+
+            return msgP;
+        }
+
+        const msg = 'Text length must be at least 100 characters';
+        const warning = textarea.insertAdjacentElement('beforebegin', createWarning(msg));
+        warning.style.display = "none";
+
+        function validateLength() {
+            if (textarea.value.length < 100) {
+                warning.style.display = "block";
+
+                return;
+            }
+            warning.style.display = "none";
+
+            console.log("success");
+        }
+        btnInterested.addEventListener('click', validateLength);
+    </script>
+</body>
+
+</html>
