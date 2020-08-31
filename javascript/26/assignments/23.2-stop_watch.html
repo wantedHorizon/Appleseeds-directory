@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop watch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .stopwatch {
+            display: flex;
+            font-size: 2rem;
+            justify-content: space-evenly;
+            background: black;
+            color: white;
+        }
+
+        .wrapper {
+            background: black;
+            font-family: sans-serif, Arial, Helvetica;
+            padding: 2rem 0;
+            width: 250px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            border-radius: 20%;
+            border: 2px solid red;
+
+
+
+        }
+
+        .control {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .minutes {
+            color: yellow;
+        }
+
+        .seconds {
+            color: blue;
+        }
+
+        .milliseconds {
+            color: red;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        .btn-stop {
+            background: red;
+            color: white;
+
+        }
+
+        .btn-reset {
+            background: blue;
+            color: white;
+        }
+
+        .btn-start {
+            background: greenyellow;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="stopwatch">
+            <div class="minutes">00</div>
+            :
+            <div class="seconds">00</div>
+            :
+            <div class="milliseconds">00</div>
+
+        </div>
+        <div class="control">
+            <button class="btn btn-start">Start</button>
+
+            <button class="btn btn-stop">Stop</button>
+            <button class="btn btn-reset">Reset</button>
+
+
+        </div>
+    </div>
+
+    <script>
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+        const milliseconds = document.querySelector('.milliseconds');
+        const btnStart = document.querySelector('.btn-start');
+        const btnStop = document.querySelector('.btn-stop');
+        const btnReset = document.querySelector('.btn-reset');
+
+        let interval;
+        let m = 0,
+            s = 0,
+            ms = 0;
+
+        function twoDigits(a) {
+            return ("0" + a).slice(-2);
+        }
+        let startEvent = btnStart.addEventListener('click', () => {
+            interval = setInterval(() => {
+                ms += 10;
+                if (ms % 1000 === 0) {
+                    s += 1;
+                    seconds.textContent = twoDigits(s);
+                    if (s % 60 === 0) {
+                        m += 1;
+                        minutes.textContent = twoDigits(m);
+                        m %= 60;
+                        s %= 60;
+
+                    }
+                    ms %= 1000;
+
+                }
+
+
+
+                milliseconds.textContent = twoDigits(ms / 10);
+                // console.log(twoDigits(ms / 10));
+
+
+
+            }, 10)
+        });
+
+
+        function stopInterval() {
+            clearInterval(interval);
+
+        }
+
+        btnReset.addEventListener('click', () => {
+            stopInterval();
+            m = 0;
+            s = 0;
+            ms = 0;
+            seconds.textContent = "00";
+            minutes.textContent = "00";
+            milliseconds.textContent = "00";
+
+        })
+        btnStop.addEventListener('click', stopInterval);
+    </script>
+
+</body>
+
+</html>

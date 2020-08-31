@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .clock {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid red;
+        }
+
+        .clock__second {
+            height: 100%;
+            width: 2px;
+            transform: rotate(0);
+            /* transition: transform 1s ease-in-out; */
+            /* border-radius: 50%; */
+        }
+
+        .clock__second .main {
+            height: 45%;
+            margin-top: 20px;
+            background: red;
+            border-radius: 50% 50% 0 0;
+
+        }
+
+        .clock__minute {
+            height: 100%;
+            width: 5px;
+
+        }
+
+        .clock__minute .main {
+            height: 30%;
+            /* margin-top: 20%; */
+            background: blue;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .clock__minute .hide {
+            height: 20%;
+            background: transparent;
+        }
+
+
+        .clock__hour {
+            height: 100%;
+            width: 5px;
+
+        }
+
+        .clock__hour .main {
+            height: 20%;
+            /* margin-top: 20%; */
+            background: yellow;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .clock__hour .hide {
+            height: 30%;
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="clock">
+        <div class="clock__second">
+
+            <div class="main"></div>
+
+        </div>
+
+        <div class="clock__minute">
+            <div class="hide"></div>
+            <div class="main"></div>
+
+        </div>
+        <div class="clock__hour">
+            <div class="hide"></div>
+            <div class="main"></div>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        const second = document.querySelector('.clock__second');
+        const minute = document.querySelector('.clock__minute');
+        const hour = document.querySelector('.clock__hour');
+
+        let s = 0,
+            m = 0,
+            h = 0;
+
+        const tick = () => {
+            s += 1;
+            s = s % 60;
+            second.style.transform = `rotate(${(6*s) }deg)`;
+
+            if (s % 60 === 0) {
+                m += 1;
+                m = m % 60
+                minute.style.transform = `rotate(${6*m }deg)`;
+
+                if (m % 60 === 0) {
+                    h += 1;
+                    h = h % 12;
+                    hour.style.transform = `rotate(${12*h}deg)`;
+
+
+
+                }
+
+            }
+
+
+
+
+
+        }
+        setInterval(tick, 1000);
+    </script>
+</body>
+
+</html>
