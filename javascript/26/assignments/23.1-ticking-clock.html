@@ -112,11 +112,19 @@
         const second = document.querySelector('.clock__second');
         const minute = document.querySelector('.clock__minute');
         const hour = document.querySelector('.clock__hour');
+        let d = new Date();
 
-        let s = 0,
-            m = 0,
-            h = 0;
+        let s = d.getSeconds(),
+            m = d.getMinutes(),
+            h = d.getHours() % 12;
+        console.log(h);
 
+        // .toLocaleString('en-CA');
+        second.style.transform = `rotate(${(6*s) }deg)`;
+
+        minute.style.transform = `rotate(${6*m }deg)`;
+
+        hour.style.transform = `rotate(${30*h}deg)`;
         const tick = () => {
             s += 1;
             s = s % 60;
@@ -130,7 +138,7 @@
                 if (m % 60 === 0) {
                     h += 1;
                     h = h % 12;
-                    hour.style.transform = `rotate(${12*h}deg)`;
+                    hour.style.transform = `rotate(${30*h}deg)`;
 
 
 
