@@ -20,7 +20,7 @@ const getRecipe =  (recipeID) => {
                     title: "Fresh tomato pasta",
                     publisher: "Pinchas Hodadad",
                 };
-                return(`${ID}: ${recipe.title}`);
+                resolve(`${ID}: ${recipe.title}`);
             },
             1500,
             recipeID
@@ -32,7 +32,6 @@ const getRecipe =  (recipeID) => {
 async function go(){
     try {
         const IDs = await getIDs()
-     debugger;
         console.log(IDs);
         const recipe = await getRecipe(IDs[2]);
         
