@@ -79,12 +79,14 @@ const onSearchSubmitHandler = async (e) => {
     }
 
 
-    // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
     try {
         const response = await fetch(`${baseURL}?q=${cityName}&appid=${APIKEY}&units=metric`);
         const data = await response.json();
         if (data.cod != 200) {
-            console.log(data.message);
+            
+            ask({
+                title: data.message
+            });
             return;
         }
         displayWeather(data);
