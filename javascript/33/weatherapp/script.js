@@ -1,7 +1,7 @@
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 const APIKEY = 'ce9bc0667a6253b447fd1faff590ee65';
 const api2 = '3e4a53abcd9a2d0cca343c015f0c3e6b&units=metric';
-const imgSrcBase ='http://openweathermap.org/img/wn/';
+const imgSrcBase ='https://openweathermap.org/img/wn/';
 
 let city = '';
 //set weather to api
