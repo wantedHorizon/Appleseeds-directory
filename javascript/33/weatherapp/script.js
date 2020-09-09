@@ -9,7 +9,6 @@ const displayWeather = (data) => {
     const weatherElement = document.querySelector('.weather');
     
     city = data.name;
-    console.log(data);
     const html = `       
     <h1><span>${data.name},${data.sys.country}</span></h1>
     <img src="${`${imgSrcBase}/${data.weather[0].icon}@2x.png`}" alt="weather"/>
