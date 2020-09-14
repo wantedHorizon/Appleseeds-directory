@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        button {
+            padding: 5px 8px;
+            background: navy;
+            color: white;
+            border-radius: 5px;
+            margin: 0 1rem;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            min-height: 100vh;
+            margin: auto;
+            padding: 50px 0;
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        li.done p {
+            text-decoration: line-through;
+        }
+
+
+        .todo-list li {
+            display: grid;
+            border: 1px solid #333;
+            align-items: center;
+            padding: 10px 5px;
+            border-radius: 10px;
+            box-shadow: 1px 2px 3px #333;
+            grid-template-columns: 20px 1fr 0.5fr 0.5fr;
+            width: 80%;
+
+            margin: 10px auto;
+            justify-content: center;
+            background: white;
+            position: relative;
+
+
+
+        }
+
+        .todo-list li div {
+            font-size: 1.2rem;
+            display: flex;
+        }
+
+        .todo-list li span {
+            font-size: 0.8rem;
+            color: grey;
+            position: absolute;
+            bottom: 2px;
+            left: 10px;
+        }
+
+
+        input.priority {
+            width: 40px;
+        }
+
+        .todo-list li:hover {
+            background: lightsalmon;
+        }
+
+        .add-panel {
+            display: flex;
+
+
+        }
+
+        .add-panel div {
+            margin: 0 10px
+        }
+
+        h1 {
+            /* margin: 50px; */
+            margin-bottom: 50px;
+            text-align: left;
+            font-family: 'Times New Roman', Times, serif;
+            color: navy;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Tasks </h1>
+        <div class="add-panel">
+            <div>
+
+                <label for="task">task:</label>
+                <input class="task" type="text">
+            </div>
+            <div>
+                <label for="priority">priority:</label>
+                <input class="priority" type="number">
+            </div>
+
+            <button class="btn-add">ADD</button>
+        </div>
+        <hr>
+        <ul class="todo-list">
+
+        </ul>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>

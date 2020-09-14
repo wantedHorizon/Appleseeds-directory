@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: red;
+        }
+
+        h1 {
+            margin: 20px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.2s ease-in-out;
+
+        }
+
+        button {
+            font-size: 1.5rem;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="increase-title">+</button>
+    <h1>Hello World</h1>
+    <button class="decrease-title">-</button>
+    <script>
+        const plusBtn = document.querySelector('.increase-title');
+        const decreaseBtn = document.querySelector('.decrease-title');
+        const title = document.querySelector('h1');
+
+        //increase title by 10px
+        const increaseFont = () => {
+            let size = window.getComputedStyle(title, null).getPropertyValue('font-size');
+            let currentSize = parseFloat(size);
+            if (currentSize > 99) return;
+
+            title.style.fontSize = (currentSize + 10) + 'px';
+        }
+
+        //decrease title by 10px
+        const decreaseFont = () => {
+            let size = window.getComputedStyle(title, null).getPropertyValue('font-size');
+            let currentSize = parseFloat(size);
+            if (currentSize < 7) return;
+
+            title.style.fontSize = (currentSize - 10) + 'px';
+        }
+
+        decreaseBtn.addEventListener('click', decreaseFont);
+        plusBtn.addEventListener('click', increaseFont);
+    </script>
+</body>
+
+</html>
