@@ -5,7 +5,7 @@ class ApprovalCard extends React.Component  {
   render(){
     return (
       <div>
-        <div className="ui card">
+        <div className="ui card" style={{border:'1px solid black', margin: '5px'}}>
           <div className="image">
             <img src={this.props.avatar} />
           </div>
