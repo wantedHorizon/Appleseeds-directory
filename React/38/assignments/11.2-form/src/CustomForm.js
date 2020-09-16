@@ -3,11 +3,11 @@ import ConfirmForm from './components/confirmForm';
 import CustomInput from './components/customInput';
 
 const defaultInputs = [
-{ value: "", name: 'firstname', label: 'First Name:', type: 'input', inputType: "text" },
-{ value: "", name: 'lastname', label: 'Last Name:', type: 'input', inputType: "text" },
-{ value: "", name: 'age', label: 'Age:', min: 0, max: 99, type: 'select' },
-{ value: "", name: 'freeText', label: 'Free Text:', type: 'textArea' },
-{ value: "", name: 'confirm1', label: 'I accept the compony terms.', checked: false, type: 'input', inputType: 'checkbox' }
+  { value: "", name: 'firstname', label: 'First Name:', type: 'input', inputType: "text" },
+  { value: "", name: 'lastname', label: 'Last Name:', type: 'input', inputType: "text" },
+  { value: "", name: 'age', label: 'Age:', min: 0, max: 99, type: 'select' },
+  { value: "", name: 'freeText', label: 'Free Text:', type: 'textArea' },
+  { value: "", name: 'confirm1', label: 'I accept the compony terms.', checked: false, type: 'input', inputType: 'checkbox' }
 
 ]
 class CustomForm extends Component {
@@ -18,10 +18,10 @@ class CustomForm extends Component {
   componentDidMount = () => {
     //check for previous state
     const items = JSON.parse(window.localStorage.getItem('inputs'));
-    if(items){
+    if (items) {
       this.setState({ inputs: items });
     }
-   //set event listener to save localinputs on exit
+    //set event listener to save localinputs on exit
     window.addEventListener('beforeunload', this.handleWindowClose);
   }
   componentWillUnmount = () => {
@@ -33,8 +33,8 @@ class CustomForm extends Component {
   formParser = () => {
     const strArr = this.state.inputs
       .filter(input => input.name !== 'confirm1')
-      .map(({ label, value },i) => { return <p key={i}>{label} {value}</p> })
-      
+      .map(({ label, value }, i) => { return <p key={i}>{label} {value}</p> })
+
     return strArr;
   }
   mapStateToInput = () => {
@@ -48,15 +48,15 @@ class CustomForm extends Component {
     return inputs;
   }
 
- 
+
 
   //Events
-  
- //save locale on exit
- handleWindowClose = () => {
-  window.localStorage.setItem('inputs', JSON.stringify(this.state.inputs));
-  // window.history.forward()
-}
+
+  //save locale on exit
+  handleWindowClose = () => {
+    window.localStorage.setItem('inputs', JSON.stringify(this.state.inputs));
+    // window.history.forward()
+  }
   onChangeHandler = (e, index) => {
 
     const newInputs = JSON.parse(JSON.stringify(this.state.inputs));
@@ -81,35 +81,38 @@ class CustomForm extends Component {
       return;
     }
 
-    this.setState({displayFormConfirm:true});
-    
-    
+    this.setState({ displayFormConfirm: true });
+
+
 
 
 
   }
   onConfirmSubmit = (e) => {
-      this.setState({inputs:defaultInputs.slice(), displayFormConfirm: false});
-      console.log('submitted');
-  
+    this.setState({ inputs: defaultInputs.slice(), displayFormConfirm: false });
+    console.log('submitted');
+
   }
   onConfirmDecline = (e) => {
-    this.setState({ displayFormConfirm: false});
+    this.setState({ displayFormConfirm: false });
     alert("You can now change the form");
 
-}
-  
+  }
+
 
   render() {
     let displayFormConfirm;
-    if(this.state.displayFormConfirm){
-      displayFormConfirm= <ConfirmForm msg={this.formParser() } submitHandler={this.onConfirmSubmit} declinedHandler={this.onConfirmDecline} />
+    if (this.state.displayFormConfirm) {
+      displayFormConfirm = <ConfirmForm msg={this.formParser()} submitHandler={this.onConfirmSubmit} declinedHandler={this.onConfirmDecline} />
     } else {
       const inputs = this.mapStateToInput();
       displayFormConfirm = (
         <>
-        {inputs}
-        <button type="ul submit" style={{ padding: '5px 10px' }} onSubmit={this.onFormSubmitHandler}>Submit</button>
+          {inputs}
+          <div style={{ textAlign: 'right' }}>
+
+            <button className="ui primary button" type="ul submit" onSubmit={this.onFormSubmitHandler}>Submit</button>
+          </div>
         </>
       );
     }

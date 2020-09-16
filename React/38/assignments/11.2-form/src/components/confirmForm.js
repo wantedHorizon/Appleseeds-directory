@@ -5,8 +5,8 @@ const confirmForm = props => {
             {props.msg}
             <div>
             <h4>Do you wish to submit the form or change it?</h4>
-                <button onClick={props.declinedHandler} className="decline">change it </button>
-                <button onClick={props.submitHandler} className="accept"> Submit</button>
+                <button className="ui  button decline" onClick={props.declinedHandler} >change it </button>
+                <button className="ui primary button accept" onClick={props.submitHandler} > Submit</button>
 
             </div>
         </div>
