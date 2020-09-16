@@ -1,0 +1,27 @@
+/* .image img {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+  background-size: cover;
+} */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.image img {
+  max-width: 100%;
+  object-position: center;
+  object-fit: cover;
+  max-height: 100%;
+}
+
+.container {
+  /* min-height: 100vh; */
+}
