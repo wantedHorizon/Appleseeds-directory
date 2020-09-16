@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ConfirmForm from './components/confirmForm';
 import CustomInput from './components/customInput';
 
 const defaultInputs = [
@@ -11,20 +12,51 @@ const defaultInputs = [
 ]
 class CustomForm extends Component {
   state = {
-    inputs: defaultInputs.slice()
+    inputs: defaultInputs.slice(),
+    displayFormConfirm: false //false=form , true="confirmSubmit"
   }
   componentDidMount = () => {
+    //check for previous state
     const items = JSON.parse(window.localStorage.getItem('inputs'));
-    this.setState({ inputs: items });
+    if(items){
+      this.setState({ inputs: items });
+    }
+   //set event listener to save localinputs on exit
     window.addEventListener('beforeunload', this.handleWindowClose);
   }
   componentWillUnmount = () => {
+    //remove event listener
     window.removeEventListener('beforeunload', this.handleWindowClose);
   }
-  handleWindowClose = () => {
-    window.localStorage.setItem('inputs', JSON.stringify(this.state.inputs));
-    // window.history.forward()
+
+  //parse form to <p>
+  formParser = () => {
+    const strArr = this.state.inputs
+      .filter(input => input.name !== 'confirm1')
+      .map(({ label, value },i) => { return <p key={i}>{label} {value}</p> })
+      
+    return strArr;
   }
+  mapStateToInput = () => {
+    const inputs = this.state.inputs.map((inputObject, index) => {
+
+      return <CustomInput inputObject={inputObject} key={index} index={index} onChangeHandler={(e) => this.onChangeHandler(e, index)} />
+
+    }
+
+    );
+    return inputs;
+  }
+
+ 
+
+  //Events
+  
+ //save locale on exit
+ handleWindowClose = () => {
+  window.localStorage.setItem('inputs', JSON.stringify(this.state.inputs));
+  // window.history.forward()
+}
   onChangeHandler = (e, index) => {
 
     const newInputs = JSON.parse(JSON.stringify(this.state.inputs));
@@ -42,13 +74,6 @@ class CustomForm extends Component {
 
 
   }
-  formParser = () => {
-    const str = this.state.inputs
-      .filter(input => input.name !== 'confirm1')
-      .map(({ label, value }) => { return `${label} '${value}'` })
-      .join('\n');
-    return str;
-  }
   onFormSubmitHandler = (e) => {
     e.preventDefault();
     if (!e.target.confirm1.checked) {
@@ -56,35 +81,42 @@ class CustomForm extends Component {
       return;
     }
 
-    if (window.confirm(`Are you sure, you want to submit this form: ${this.formParser()}`)) {
-      this.setState({inputs:defaultInputs.slice()})
+    this.setState({displayFormConfirm:true});
+    
+    
+
+
+
+  }
+  onConfirmSubmit = (e) => {
+      this.setState({inputs:defaultInputs.slice(), displayFormConfirm: false});
       console.log('submitted');
-    } else {
-      alert('You can update the form ');
-    }
-
-
-
+  
   }
+  onConfirmDecline = (e) => {
+    this.setState({ displayFormConfirm: false});
+    alert("You can now change the form");
 
-  mapStateToInput = () => {
-    const inputs = this.state.inputs.map((inputObject, index) => {
-
-      return <CustomInput inputObject={inputObject} key={index} index={index} onChangeHandler={(e) => this.onChangeHandler(e, index)} />
-
-    }
-
-    );
-    return inputs;
-  }
+}
+  
 
   render() {
-    const inputs = this.mapStateToInput();
+    let displayFormConfirm;
+    if(this.state.displayFormConfirm){
+      displayFormConfirm= <ConfirmForm msg={this.formParser() } submitHandler={this.onConfirmSubmit} declinedHandler={this.onConfirmDecline} />
+    } else {
+      const inputs = this.mapStateToInput();
+      displayFormConfirm = (
+        <>
+        {inputs}
+        <button type="ul submit" style={{ padding: '5px 10px' }} onSubmit={this.onFormSubmitHandler}>Submit</button>
+        </>
+      );
+    }
     return (
       <div className="CustomForm">
         <form action="" className="ui inverted form " style={{ background: 'black', padding: '10px', borderRadius: '15px' }} onSubmit={this.onFormSubmitHandler}>
-          {inputs}
-          <button type="ul submit" style={{ padding: '5px 10px' }} onSubmit={this.onFormSubmitHandler}>Submit</button>
+          {displayFormConfirm}
         </form>
       </div>
     );
