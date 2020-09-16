@@ -3,11 +3,22 @@ import './App.css';
 
 class App extends Component {
   state = {
-    show: true
+    show: false
   }
   hide = () => {
 
     this.setState({ show: false })
+  }
+
+
+  componentDidMount =() => {
+    setTimeout(()=>{this.setState({show:true})},1500);
+  }
+
+  componentDidUpdate= () => {
+    if(this.state.show){
+      setTimeout(() => this.hide(), 3000);
+    }
   }
   render() {
     let box = null;
@@ -19,7 +30,7 @@ class App extends Component {
           <div className="box3"></div>
         </div>
         );
-      setTimeout(() => this.hide(), 4000);
+     
     }
 
     return (
