@@ -1,7 +1,8 @@
 import React from 'react';
 const AddBook = ({ addFunction }) => {
     return (
-        <div className="ui ">
+        <div className="ui card" style={{padding:'10px', width:'100%'}}>
+            <h2 style={{color:'black'}}>Add Books</h2>
             <form action="" className="ui form" onSubmit={addFunction}>
                 <div className="field">
                     <label htmlFor="name">Book Name</label>

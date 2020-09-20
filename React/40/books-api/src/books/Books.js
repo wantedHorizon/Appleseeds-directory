@@ -860,8 +860,10 @@ const local = false;
 class Books extends Component {
 
     state = {
-        books: []
+        books: [],
+        loading: true
     }
+
     componentDidMount = () => {
         if (!local) {
             this.getAllBooks();
@@ -870,21 +872,18 @@ class Books extends Component {
             this.setState({ books: books });
 
         }
-    }
-    deleteBookById = async (e, id) => {
-        try {
-            console.log(e.target, id);
-            const res = await booksAPI.delete(`books/${id}`);
-            console.log(res);
-            if (res.status == 200) {
-                const newBooks = this.state.books.filter(b => b.id !== id);
-                this.setState({ books: newBooks });
-            }
-        } catch (e) {
-            console.log(e);
-        }
+
     }
 
+    //loading methods
+    showLoading = () => {
+        this.setState({ loading: true });
+    }
+
+    hideLoading = () => {
+        this.setState({ loading: false });
+    }
+    //events
     onChangeInputHandler = (e, id) => {
         const books = this.state.books.slice();
         const toUpdate = books.findIndex((b) => b.id === id);
@@ -895,31 +894,53 @@ class Books extends Component {
 
         this.setState({ books: books });
     }
+
+    //async axious methods
     updateBookById = async (id) => {
         try {
+            this.showLoading();
             const data = this.state.books.find(b => b.id === id);
-            console.log(data);
             if (!data) { return; }
 
             const res = await booksAPI.put(`books/${id}`, data);
-            console.log(res);
             if (res.status == 200) {
                 console.log("updated");
             }
         } catch (e) {
             console.log(e);
+        } finally {
+            this.hideLoading();
+
         }
     }
+    deleteBookById = async (e, id) => {
+        try {
+            this.showLoading();
 
+            const res = await booksAPI.delete(`books/${id}`);
+
+            if (res.status == 200) {
+                const newBooks = this.state.books.filter(b => b.id !== id);
+                this.setState({ books: newBooks });
+            }
+        } catch (e) {
+            console.log(e);
+        } finally {
+            this.hideLoading();
+
+        }
+    }
     addNewBook = async (e) => {
         try {
+            this.showLoading();
+
             e.preventDefault();
             const url = e.target.url.value;
             const name = e.target.name.value;
             const description = e.target.description.value;
             const author = e.target.author.value;
 
-            const data ={
+            const data = {
                 name: name,
                 image: url,
                 autour: author,
@@ -930,39 +951,65 @@ class Books extends Component {
             if (res.status == 201) {
                 const newBooks = this.state.books.slice();
                 newBooks.push(res.data);
-                this.setState({books: newBooks});
+                this.setState({ books: newBooks });
             }
 
         } catch (e) {
             console.log(e);
+        } finally {
+            this.hideLoading();
+
         }
     }
 
     getAllBooks = async () => {
 
         try {
+            this.showLoading();
+
             const data = await booksAPI.get('books');
             this.setState({ books: data.data });
 
         } catch (e) {
             console.log(e);
+        } finally {
+            this.hideLoading();
+
         }
 
     }
+
+
     render() {
         const methods = {
             delete: this.deleteBookById,
             change: this.onChangeInputHandler,
             update: this.updateBookById
         }
-        const books = this.state.books.map(book => <Book key={book.id} data={book} methods={methods} />)
-        return (
-            <div className='Books ui items '>
-                <AddBook addFunction={this.addNewBook} />
-                
-                <h1>Books</h1>
-                {books}
+        let content = (
+            <div className="ui segment " style={{height:'100vh'}}>
+            <div className="ui active dimmer">
+              <div className="ui big text loader">Loading</div>
             </div>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
+        );
+        if (!this.state.loading) {
+            const books = this.state.books.map(book => <Book key={book.id} data={book} methods={methods} />)
+            content = (
+                <div className='Books ui items ' style={{padding:'20px'}}>
+                    <AddBook addFunction={this.addNewBook} />
+                    <h1>Books</h1>
+                    {books}
+                </div>
+            )
+        }
+        return (
+            <>
+                {content}
+            </>
         )
     }
 }
