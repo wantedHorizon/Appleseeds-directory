@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import booksAPI from '../api/booksAPI';
+import AddBook from './addBook';
 import Book from './book/Book';
 
 const books = [
@@ -862,46 +863,86 @@ class Books extends Component {
         books: []
     }
     componentDidMount = () => {
-        if(!local){
+        if (!local) {
             this.getAllBooks();
 
         } else {
-            this.setState({books: books});
+            this.setState({ books: books });
 
         }
     }
-    deleteBookById = async(e,id) => {
+    deleteBookById = async (e, id) => {
         try {
-            console.log(e.target,id);
+            console.log(e.target, id);
             const res = await booksAPI.delete(`books/${id}`);
             console.log(res);
-            if(res.status==200){
-               const newBooks = this.state.books.filter(b => b.id !== id);
-               this.setState({books: newBooks});
+            if (res.status == 200) {
+                const newBooks = this.state.books.filter(b => b.id !== id);
+                this.setState({ books: newBooks });
             }
-        } catch(e){
+        } catch (e) {
             console.log(e);
         }
     }
 
-    updateBookById = async(id) => {
+    onChangeInputHandler = (e, id) => {
+        const books = this.state.books.slice();
+        const toUpdate = books.findIndex((b) => b.id === id);
+        if (toUpdate < 0)
+            return;
+
+        books[toUpdate][e.target.dataset.state] = e.target.value;
+
+        this.setState({ books: books });
+    }
+    updateBookById = async (id) => {
         try {
-            const res = await booksAPI.delete(`books/${id}`);
+            const data = this.state.books.find(b => b.id === id);
+            console.log(data);
+            if (!data) { return; }
+
+            const res = await booksAPI.put(`books/${id}`, data);
             console.log(res);
-            if(res.status==200){
-               const newBooks = this.state.books.filter(b => b.id !== id);
-               this.setState({books: newBooks});
+            if (res.status == 200) {
+                console.log("updated");
             }
-        } catch(e){
+        } catch (e) {
             console.log(e);
         }
     }
 
-    getAllBooks = async() => {
+    addNewBook = async (e) => {
+        try {
+            e.preventDefault();
+            const url = e.target.url.value;
+            const name = e.target.name.value;
+            const description = e.target.description.value;
+            const author = e.target.author.value;
+
+            const data ={
+                name: name,
+                image: url,
+                autour: author,
+                description: description
+            }
+            const res = await booksAPI.post(`books/`, data);
+            console.log(res);
+            if (res.status == 201) {
+                const newBooks = this.state.books.slice();
+                newBooks.push(res.data);
+                this.setState({books: newBooks});
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    getAllBooks = async () => {
 
         try {
-            const data= await booksAPI.get('books');
-            this.setState({books: data.data});
+            const data = await booksAPI.get('books');
+            this.setState({ books: data.data });
 
         } catch (e) {
             console.log(e);
@@ -909,13 +950,17 @@ class Books extends Component {
 
     }
     render() {
-        const methods ={
-            delete: this.deleteBookById
+        const methods = {
+            delete: this.deleteBookById,
+            change: this.onChangeInputHandler,
+            update: this.updateBookById
         }
-        const books = this.state.books.map( book => <Book key={book.id} data={book} methods={methods}  />)
+        const books = this.state.books.map(book => <Book key={book.id} data={book} methods={methods} />)
         return (
             <div className='Books ui items '>
-            <h1>Books</h1>
+                <AddBook addFunction={this.addNewBook} />
+                
+                <h1>Books</h1>
                 {books}
             </div>
         )
