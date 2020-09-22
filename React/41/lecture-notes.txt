@@ -1,0 +1,48 @@
+
+
+Props Types 
+____________________
+
+We use propTypes to prevent invalid use of our component mainly by other people, 
+In development mode the developer will get an error, if he uses invalid type then defined.
+
+Pros 
+- we can prevent invalid use
+- get more errors before production/ api uses different inputsTypes
+- readable -- easy to understand
+
+cons 
+- high maintenance(every props change demands multiple changes)
+- demands instructions for every use.
+
+
+class
+________
+import PropTypes from 'prop-types';
+
+Person.propTypes = {
+//   click: PropTypes.func,
+//   name: PropTypes.string,
+//   age: PropTypes.number,
+//   changed: PropTypes.func
+// };
+
+
+children
+_________________
+//Message.propTypes={children: PropTypes.element.isRequired}
+
+We use this children to validate that there is a single react child on it. 
+regular JSX element (React elements that represent DOM tags) or another React component
+
+
+__________________________________________________________________________________________________________________________________
+
+Default Props 
+_____________
+
+
+Problem 
+    When we create an elements that uses props, if we dont supply props or handle the missing props from the inside we would get an error. 
+
+    solution: default props 
