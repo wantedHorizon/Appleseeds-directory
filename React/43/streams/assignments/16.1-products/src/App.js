@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import Header from './components/Header';
 import Products from './components/products/Products';
@@ -12,10 +12,13 @@ function App() {
     <div className="App ui container">
       <BrowserRouter>
         <Header />
-        <Route path={Routes.home} exact={true} component={HomePage} />
-        <Route path={Routes.products} exact component={Products} />
-        <Route path={Routes.product} component={Product} />
-        <Route path={Routes.pageNotFound} exact component={PageNotFound} />
+        <Switch>
+          <Route path={Routes.home} exact={true} component={HomePage} />
+          <Route path={Routes.products} exact component={Products} />
+          <Route path={Routes.product} component={Product} />
+          <Route path={Routes.pageNotFound} exact component={PageNotFound} />
+          <Redirect from="/" to={Routes.pageNotFound} />
+        </Switch>
       </BrowserRouter>
     </div>
   );
