@@ -1,0 +1,109 @@
+
+
+INSERT ALL K TO MAP 
+
+
+LOOP ON MAP WITH KEY{
+	TO_SEARH= N-KEY
+	IF(MAP[TO_SEARCH] EXIST)
+		REUTNR [TO_SEARCH(CAB),KEY(FIRST CAB OF THAT KEY)]
+ }
+
+
+REUTRN -1 
+
+O(CABS NUMBER)//WITH DIFFRENT SEATS 
+
+
+---------------------------------------------------------------------------------------
+
+6) stack
+
+checkBracketsLeagal(str){ //O(n) -- string length
+	if(str.length %2 === 1)
+	return false;
+
+	OBJECT= {
+		TYPE1=0, //[]
+		TYPE2=0,//()
+		TYPE3=0// {}
+	}
+	 
+	FOR( sine IN str){
+		if(sine TYPE is  OPEN){
+			OBJECT[TYPE] ++
+		}
+		
+		else{//TYPE CLOSE
+			OBJECT[TYPE] --;
+			IF(OBJECT[TYPE] < 0)
+				RETURN FALSE;
+		}
+	}
+
+if (all types === 0)
+	return true
+
+return false;	
+
+}//END checkBracketsLeagal 
+
+---------------------------------------------------------------------------
+
+
+Given 2D array, and starting point and ending point is there a valid path moving only through 0’s from the start to the end (wix)
+
+hasPath([ [0,1,1], [1,0,1], [1,1,0] ], [0,0],[2,2]) #false
+hasPath([ [0,0,0], [0,1,0], [0,1,0] ], [0,0],[2,2]) #true 
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+	countWords(str) => {
+
+	newStr = str.replace(all puunction , " ");
+
+	regex= \\\s(\w+)\s\;
+
+	const resultsArr=regex.match();
+		
+	return resultsArr.map()
+
+
+		
+
+
+
+
+	}
+
+
+----------------------------------------------------------------------
+
+
+
+
+	countUniqe = (arr) => { //O(n)runtime , O(1) memory
+		if(arr.length === 0) return 0
+		if(arr.length === 1) return 1;
+			
+
+		
+		let count=0;
+		for(i=1 to n){
+			if(arr[i-1] !== arr[i]){
+				count++;
+				
+			}
+				
+		}
+
+	 return count; 				
+	}
+
+
+

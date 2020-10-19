@@ -1,0 +1,25 @@
+Skills: JavaScript, TypeScript, Vue.js, Node.js, Express.js, React, React Native, MongoDB, Firebase, PHP, Laravel, Jquery, Restful Api, Ajax, MySQL, Git, Photoshop
+- Demonstrable experience with PHP including OOP, security, refactoring.
+- Excellent knowledge of Laravel framework and experience building factories/facades/libraries using abstract classes, interfaces, traits.
+
+Good knowledge of RDBMS (MySQL), database designing and query optimisation techniques.
+
+Hands on experience in RESTful API design and development including implementation of oAuth2.0 for authentication and authorization.
+
+Working knowledge of version controlling systems like Git, clear understanding of Gitflow workflow, repository management tools like BitBucket and understanding of overall CI/CD process.
+
+Working knowledge of AWS, related services and server administration like setting up Apache.
+
+I Write clean, secure, test driven, easily maintainable and modular codes.
+
+Database designing and maintenance.
+
+Troubleshoot and debug applications.
+
+I Adhere closely to development plans and anticipate changes to specification or schedule as they become necessary during development.
+
+I Keep abreast of new trends and best practices in web development.
+
+Client communication (verbal/written) as and when required.
+
+I lead a healthy lifestyle, productive, tough, creative, easy to train, highly demanding of myself, I know how to work in a team and perform tasks on my own. 
