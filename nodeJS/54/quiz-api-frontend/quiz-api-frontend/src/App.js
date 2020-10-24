@@ -6,6 +6,7 @@ import './App.css';
 import LandingPage from './pages/LandingPage';
 import AnswerQuiz from './pages/AnswerQuiz';
 import UsernameDetailPage from './pages/UsernameDetailPage';
+import CreateNewQuizPage from './pages/CreateNewQuizPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <AnswerQuiz />
         </Route>
         <Route path="/users/:username" component={UsernameDetailPage} />
+        <Route path="/quiz/add" exact component={CreateNewQuizPage} />
       </Router>
     </div>
   );
