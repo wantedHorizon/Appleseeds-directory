@@ -26,7 +26,7 @@ const CreateQuestionComponent = ({ index, data, onChange }) => {
     <div className="CreateQuestionComponent">
       CreateQuestionComponent
       <Form.Group grouped style={{ border: '1px solid black' }}>
-        <label htmlFor={`q{${index}}`}>{`Question Number ${index}`}</label>
+        <label htmlFor={`q{${index}}`}>{`Question Number ${index + 1}`}</label>
         <Form.Input value={data.q} placeholder="Question" onChange={(e) => onChange(e, index, -1, data, 'q')} />
 
         {displayQuestions()}

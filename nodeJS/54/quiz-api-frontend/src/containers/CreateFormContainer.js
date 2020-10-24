@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from 'react';
-import { Form as SemForm } from 'semantic-ui-react';
+import { Form as SemForm, FormButton } from 'semantic-ui-react';
 import Form from '../components/form/Form';
 import quizAPI from '../api/quiz-api';
 import CreateQuestionComponent from '../components/form/CreateQuestionComponent/CreateQuestionComponent';
@@ -33,23 +33,24 @@ const CreateFormContainer = () => {
     //   alert('plz fill all answers');
     // }
 
-    // try {
-    //   const data = await quizAPI.post('/quiz/answers/add', {
-    //     username,
-    //     player_name: name,
-    //     answers,
-    //   });
-    //   console.log(data);
-    //   // todo move to display results
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    try {
+      const data = await quizAPI.post('/quiz/create/user', {
+        username,
+        firstname: 'name1',
+        lastname: 'lastname1',
+        survey: formData,
+      });
+      console.log(data);
+      // todo move to display results
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const addNewQuestionHandler = () => {
     const newQuestion = {
-      q: '',
-      answers: ['', '', '', ''],
+      q: `q${formData.length + 1}`,
+      answers: ['1', '2', '3', '4'],
       correct: 0,
     };
     const newForm = formData.slice();
@@ -72,7 +73,7 @@ const CreateFormContainer = () => {
   };
   console.log(formData);
   return (
-    <div className="CreateFormContainer ">
+    <div className="CreateFormContainer " style={{ maxWidth: '50%', margin: '0 auto' }}>
       <h3>quizForm</h3>
 
       <Form className="ui form " onSubmit={onSubmitHandler}>
@@ -82,9 +83,15 @@ const CreateFormContainer = () => {
 
         <div className="inline-fields">{displayForm()}</div>
         <div className="field">
-          <button onClick={addNewQuestionHandler}>Add New Question</button>
+          <button className="button ui" type="button" onClick={addNewQuestionHandler}>
+            Add New Question
+          </button>
         </div>
-        <input type="submit" value="submit" />
+        <div className="field">
+          <FormButton className="button ui" type="submit">
+            Create New User
+          </FormButton>
+        </div>
       </Form>
     </div>
   );
