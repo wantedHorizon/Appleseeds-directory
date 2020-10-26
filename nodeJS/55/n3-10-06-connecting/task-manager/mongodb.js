@@ -5,7 +5,7 @@ const { MongoClient, ObjectID } = require('mongodb');
 
 
 const connectionURL = 'mongodb://127.0.0.1:27017';
-const databaseName = 'task-manager';
+const databaseName = 'college';
 
 const id = new ObjectID();
 
@@ -18,36 +18,58 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, async (error, clie
     }
 
     const db = client.db(databaseName);
-
+    
     //1
-       const data = await db.collection('resturants')
-        .find( {$and: [
-            {"borough":"Bronx"},
-            { $or: [
-                {"cuisine":"American "},
-                {"cuisine":"Chinese dish"}
+    //    const data = await db.collection('resturants')
+    //     .find( {$and: [
+    //         {"borough":"Bronx"},
+    //         { $or: [
+    //             {"cuisine":"American "},
+    //             {"cuisine":"Chinese dish"}
 
 
-            ]
+    //         ]
 
-            }
+    //         }
 
-        ] }).toArray();
+    //     ] }).toArray();
 
-        debugger;
+    //     debugger;
     //2
     // const data = await db.collection('resturants')
     //     .findOne({})
 
+    //3
+    // const data = await db.collection('resturants')
+    // .find({
+    //     $and: [
+    //         {"borough": {$ne: 'Staten Island'}},
+    //         {"borough": {$ne: 'Queens'}},
+    //         {"borough": {$ne: 'Bronx'}},
+    //         {"borough": {$ne: 'Brooklyn'}}
 
-    console.log(data);
-   console.dir(db);
+
+    //     ]
+    // }, {restaurant_id:1,name:1,borough:1,cuisine:1,_id:0,grades:0}
+    // ).toArray();
 
 
 
+    // console.log(data);
 
+    //4
 
+    db.collection('students').insertMany([
+        { name: "Shani Raba", address: "Rishon LeZiyon"},
+        { name: "Pinchas Hoddad", address: "Bat Yam" }
+    ], (errpr, result)=> {
+        if(error){
+                    return console.log("Unable to insert user");
+        }
 
+                console.log(result.ops);
+    })
+    //alternatives will be .insert(old will be removed ) || calling .insertOne() multiple times
 
 
 
@@ -105,22 +127,6 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, async (error, clie
     //     console.log(result.ops);
     // });
 
-    // db.collection('users').insertMany([
-    //     {
-    //         name:' Jen',
-    //         age: 28
-    //     },
-    //     {
-    //         name: 'Guntar',
-    //         age:27
-    //     }
-    // ], (errpr, result)=> {
-    //     if(error){
-    //                 return console.log("Unable to insert user");
-    //             }
-
-    //             console.log(result.ops);
-    // })
 
 
     // db.collection('tasks').insertMany([
